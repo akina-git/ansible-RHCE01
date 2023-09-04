@@ -1,0 +1,5 @@
+Inventory_hostname
+Total_memory
+BIOS_version
+VDA_Size
+VDB_Size

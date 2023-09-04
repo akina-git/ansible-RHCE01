@@ -1,0 +1,20 @@
+---
+- name: configuring yum repository
+  hosts: all
+  tasks:
+    - name: baseos repo
+      ansible.builtin.yum_repository:
+        name: baseos
+        description: BaseOS Repository
+        baseurl: http://192.168.56.102/rhel9-repo/BaseOS/
+        gpgcheck: yes
+        gpgkey: http://192.168.56.102/rhel9-repo/RPM-GPG-KEY-redhat-release
+        enabled: yes
+    - name: appstream repo
+      ansible.builtin.yum_repository:
+        name: appstream
+        description: Appstream Repository
+        baseurl: http://192.168.56.102/rhel9-repo/AppStream/
+        gpgcheck: yes
+        gpgkey: http://192.168.56.102/rhel9-repo/RPM-GPG-KEY-redhat-release
+        enabled: yes

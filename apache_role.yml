@@ -1,0 +1,5 @@
+---
+- name: Deploy role to Install, Start and Enable Apache on Dev hosts
+  hosts: dev
+  roles:
+    - apache

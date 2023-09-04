@@ -1,0 +1,2 @@
+#ansible-galaxy collection install http://192.168.56.102/rhel9-repo/Ansible/Collections/ansible-posix-1.5.4.tar.gz -p collections
+#ansible-galaxy collection install http://192.168.56.102/rhel9-repo/Ansible/Collections/fedora-linux_system_roles-1.45.1.tar.gz -p collections

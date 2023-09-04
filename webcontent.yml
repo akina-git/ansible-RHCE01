@@ -1,0 +1,24 @@
+---
+- name: publish content on web page
+  hosts: dev
+  tasks:
+    - name: create /devweb directory w/ devops group owner
+      ansible.builtin.file:
+        path: /devweb
+        state: directory
+        group: devops
+        mode: u=rwx,g=rws,o=rx
+        setype: httpd_sys_content_t
+    - name: touch a index.html file
+      ansible.builtin.file:
+        path: /devweb/index.html
+        state: touch
+    - name: copy the contents to index.html
+      ansible.builtin.copy:
+        content: "Development\n"
+        dest: /devweb/index.html
+    - name: create softlink of /devweb to /var/html/www/devweb
+      ansible.builtin.file:
+        src: /devweb
+        dest: /var/www/html/devweb
+        state: link

@@ -1,0 +1,24 @@
+---
+- name: package installation
+  hosts: dev,test
+  tasks:
+    - name: installing php and mariadb-server
+      ansible.builtin.dnf:
+        name:
+          - vsftpd
+          - mariadb-server
+        state: present
+- name: group package installation
+  hosts: prod
+  tasks:
+    - name: install RPM Dev tools group package in prod
+      ansible.builtin.dnf:
+        name: '@RPM Development Tools'
+        state: present
+- name: Update host
+  hosts: dev
+  tasks:
+    - name: Update all pacakges in dev
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest

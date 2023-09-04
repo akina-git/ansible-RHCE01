@@ -1,0 +1,5 @@
+---
+- src: http://192.168.56.102/rhel9-repo/Ansible/Roles/ansible-role-user.tar.gz
+  name: user
+- src: http://192.168.56.102/rhel9-repo/Ansible/Roles/rhel9_cis_role.tar.gz
+  name: cis

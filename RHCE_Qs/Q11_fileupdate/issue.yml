@@ -1,0 +1,19 @@
+---
+- name: Change content on /etc/issue
+  hosts: all
+  tasks:
+    - name: replace content in Dev
+      ansible.builtin.copy:
+        content: Development
+        dest: /etc/issue
+      when: inventory_hostname in groups['dev']
+    - name: replace content in test
+      ansible.builtin.copy:
+        content: Test
+        dest: /etc/issue
+      when: inventory_hostname in groups['test']
+    - name: replace content in Prod
+      ansible.builtin.copy:
+        content: Production
+        dest: /etc/issue
+      when: inventory_hostname in groups['prod']

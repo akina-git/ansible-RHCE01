@@ -1,0 +1,9 @@
+---
+- name: run user role on balancers group
+  hosts: balancers
+  roles:
+    - user
+- name: run cis role on webserver group
+  hosts: webservers
+  roles:
+    - cis

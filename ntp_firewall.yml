@@ -1,0 +1,10 @@
+---
+- name: setup timesync
+  hosts: all
+  tasks:
+    - name: enable ntp on firewalld
+      ansible.posix.firewalld:
+        service: ntp
+        permanent: true
+        state: enabled
+        immediate: true
