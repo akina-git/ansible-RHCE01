@@ -13,14 +13,14 @@
     - name: Creating LVM in 1500MB
       ansible.builtin.command: 'lvcreate -L 1500M -n data research'
       when: vginfo is success
-      register: lv1
+      register: lvcreate
     - ansible.builtin.debug:
         msg: "insufficient size of vg"
-      when: lv1 is failed
+      when: lvcreate is failed
 
     - name: Create LVM in 800MB
       ansible.builtin.command: 'lvcreate -L 800M -n data research'
-      when: lv1 is failed
+      when: lvcreate is failed
 
     - name: Assign filesystem as ext3
       ansible.builtin.command: 'mkfs.ext3 /dev/research/data'
